@@ -4,9 +4,16 @@ import Layout from "../../layouts/Layout/Layout.astro";
 import { getFilmsService } from "../../components/views/films/services/getFilms.service";
 
 export const getStaticPaths = (async () => {
-  const { films, baseImageUrl } = await getFilmsService({ sizeImg: 500 });
+  const { films: filmsPage1, baseImageUrl } = await getFilmsService({
+    sizeImg: 500,
+  });
+  const { films: filmsPage2 } = await getFilmsService({
+    sizeImg: 500,
+    page: 2,
+  });
+  const films = [...filmsPage1.results, ...filmsPage2.results];
 
-  return films.results.map((film) => ({
+  return films.map((film) => ({
     params: { id: film.id },
     props: {
       title: film.title,

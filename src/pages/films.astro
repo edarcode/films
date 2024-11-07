@@ -4,14 +4,16 @@ import type { Films } from "../components/views/films/types";
 import Layout from "../layouts/Layout/Layout.astro";
 import { ROUTER } from "./router";
 
-const { films, baseImageUrl } = await getFilmsService();
+const { films: films1 } = await getFilmsService();
+const { films: films2, baseImageUrl } = await getFilmsService({ page: 2 });
+const films = [...films1.results, ...films2.results];
 ---
 
 <Layout title={ROUTER.films.display}>
   <h1 class="text-6xl mb-5">{ROUTER.films.display}</h1>
   <ul class="flex flex-wrap justify-center gap-5">
     {
-      films.results.map((film) => {
+      films.map((film) => {
         film.id;
 
         return (
