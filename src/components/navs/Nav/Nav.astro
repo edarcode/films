@@ -1,1 +1,8 @@
-<nav>nav</nav>
+---
+import { ROUTER } from "../../../pages/router";
+---
+
+<nav class="p-3">
+  <a href={ROUTER.index.path}>{ROUTER.index.display}</a>
+  <a href={ROUTER.films.path}>{ROUTER.films.display}</a>
+</nav>

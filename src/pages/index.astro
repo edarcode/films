@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout/Layout.astro";
+import { ROUTER } from "./router";
 ---
 
-<Layout title="Péliculas">
-  <h1>Péliculas</h1>
+<Layout title={ROUTER.index.display}>
+  <h1 class="text-6xl">{ROUTER.index.display}</h1>
 </Layout>

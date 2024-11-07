@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout/Layout.astro";
+import { getFilmsService } from "../../components/views/films/services/getFilms.service";
+
+export const getStaticPaths = (async () => {
+  const { films, baseImageUrl } = await getFilmsService({ sizeImg: 500 });
+
+  return films.results.map((film) => ({
+    params: { id: film.id },
+    props: {
+      title: film.title,
+      backdrop: `${baseImageUrl}/${film.backdrop_path}`,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { title, backdrop } = Astro.props;
+---
+
+<Layout title={title}>
+  <h1>
+    {title}
+  </h1>
+  <img src={backdrop} alt={title} />
+</Layout>
