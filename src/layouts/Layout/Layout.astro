@@ -1,0 +1,32 @@
+---
+import Nav from "../../components/navs/Nav/Nav.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header><Nav /></header>
+    <slot />
+    <footer>©️Casi todos los derechos reservados</footer>
+  </body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
+</style>
