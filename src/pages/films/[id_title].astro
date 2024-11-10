@@ -11,16 +11,17 @@ export const getStaticPaths = (async () => {
     props: {
       title: film.title,
       backdrop: film.backdrop,
+      poster: film.poster,
     },
   }));
 
   return pages;
 }) satisfies GetStaticPaths;
 
-const { title, backdrop } = Astro.props;
+const { title, backdrop, poster } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title} img={poster} description={`Detalles sobre ${title}`}>
   <h1>
     {title}
   </h1>
