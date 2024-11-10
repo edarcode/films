@@ -7,7 +7,9 @@ export const getStaticPaths = (async () => {
   const films = await getFilmsService({ totalPages: 3 });
 
   const pages = films.map((film) => ({
-    params: { id_title: `${film.id}_${film.title}` },
+    params: {
+      id_title: `${film.id}_${film.title.replace(/[¿?]/g, "").split(" ").splice(0, 3).join("_")}`,
+    },
     props: {
       title: film.title,
       backdrop: film.backdrop,

@@ -13,7 +13,9 @@ const { films } = Astro.props;
   {
     films.map((film) => (
       <li>
-        <a href={`${ROUTER.films.path}${film.id}_${film.title}`}>
+        <a
+          href={`${ROUTER.films.path}${film.id}_${film.title.replace(/[¿?]/g, "").split(" ").splice(0, 3).join("_")}`}
+        >
           <h2>{film.title}</h2>
           <picture>
             <img src={film.poster} alt={film.title} />
