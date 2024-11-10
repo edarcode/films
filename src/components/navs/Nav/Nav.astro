@@ -2,7 +2,19 @@
 import { ROUTER } from "../../../pages/router";
 ---
 
-<nav class="p-3">
+<nav class="nav">
   <a href={ROUTER.index.path}>{ROUTER.index.display}</a>
   <a href={ROUTER.films.path}>{ROUTER.films.display}</a>
 </nav>
+
+<style>
+  .nav {
+    display: flex;
+    gap: var(--lg);
+    font-size: 3rem;
+
+    a {
+      padding: 1rem;
+    }
+  }
+</style>

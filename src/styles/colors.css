@@ -1,0 +1,21 @@
+:root {
+  --bg-main: #000000; /* Fondo Principal */
+  --bg-surf: #252525; /* Superficie */
+  --primary: hsl(255, 72%, 47%); /* Primario */
+  --secondary: hsl(201, 83%, 39%); /* Secundario */
+  --titles: #fff; /* Texto Principal */
+  --paras: #fff; /* Texto Secundario */
+  --hl: #ffbc42; /* Resaltado */
+  --brr: #cccccc; /* Borde */
+  --accent: #dd4ea5; /* Acento */
+  --hover: #3c91e6; /* Hover */
+
+  /* Common */
+  --blue: #0066cc;
+  --red: #cd231d;
+  --green: #8c9900;
+  --grey: grey;
+  --soft-grey: #9d9d9d;
+  --black: #24242c;
+  --white: whitesmoke;
+}

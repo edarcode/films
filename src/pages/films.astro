@@ -1,35 +1,13 @@
 ---
-import { getFilmsService } from "../components/views/films/services/getFilms.service";
+import ListFilms from "../components/views/films/ListFilms/ListFilms.astro";
 import type { Films } from "../components/views/films/types";
 import Layout from "../layouts/Layout/Layout.astro";
 import { ROUTER } from "./router";
-
-const { films: films1 } = await getFilmsService();
-const { films: films2, baseImageUrl } = await getFilmsService({ page: 2 });
-const films = [...films1.results, ...films2.results];
 ---
 
 <Layout title={ROUTER.films.display}>
-  <h1 class="text-6xl mb-5">{ROUTER.films.display}</h1>
-  <ul class="flex flex-wrap justify-center gap-5">
-    {
-      films.map((film) => {
-        film.id;
-
-        return (
-          <li class="max-w-48 grid gap-2 border p-2 rounded-md">
-            <a href={`/films/${film.id}`}>
-              <h2>{film.title}</h2>
-              <picture>
-                <img
-                  src={`${baseImageUrl}/${film.poster_path}`}
-                  alt={film.title}
-                />
-              </picture>
-            </a>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <h1>{ROUTER.films.display}</h1>
+  <ListFilms />
 </Layout>
+
+<style></style>

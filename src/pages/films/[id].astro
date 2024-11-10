@@ -4,20 +4,17 @@ import Layout from "../../layouts/Layout/Layout.astro";
 import { getFilmsService } from "../../components/views/films/services/getFilms.service";
 
 export const getStaticPaths = (async () => {
-  const { films: filmsPage1, baseImageUrl } = await getFilmsService({
-    sizeImg: 500,
-  });
-  const { films: filmsPage2 } = await getFilmsService({
-    sizeImg: 500,
-    page: 2,
-  });
-  const films = [...filmsPage1.results, ...filmsPage2.results];
+  const { results: films1 } = await getFilmsService();
+  const { results: films2 } = await getFilmsService({ page: 2 });
+  const { results: films3 } = await getFilmsService({ page: 3 });
+
+  const films = [...films1, ...films2, ...films3];
 
   return films.map((film) => ({
     params: { id: film.id },
     props: {
       title: film.title,
-      backdrop: `${baseImageUrl}/${film.backdrop_path}`,
+      backdrop: film.backdrop,
     },
   }));
 }) satisfies GetStaticPaths;
