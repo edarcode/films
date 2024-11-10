@@ -11,7 +11,7 @@ const films = await getFilmsService();
 <Layout title={ROUTER.films.display}>
   <h1>{ROUTER.films.display}</h1>
   <ListFilms films={films.slice(0, 4)} />
-  <Paged next={"2"} />
+  <Paged next={"2"} currentPage={1} />
 </Layout>
 
 <style></style>

@@ -20,7 +20,11 @@ page.url.prev;
 <Layout title={ROUTER.films.display}>
   <h1>{ROUTER.films.display}</h1>
   <ListFilms films={page.data} />
-  <Paged prev={page.url.prev} next={page.url.next} />
+  <Paged
+    prev={page.url.prev}
+    next={page.url.next}
+    currentPage={page.currentPage}
+  />
 </Layout>
 
 <style></style>

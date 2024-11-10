@@ -2,19 +2,22 @@
 interface Props {
   prev?: string;
   next?: string;
+  currentPage: number;
 }
 
-const { next, prev } = Astro.props;
+const { next, prev, currentPage } = Astro.props;
 ---
 
 <div class="paged">
   <a href={prev}><button disabled={!prev}>Anterior</button></a>
+  <span>{currentPage}</span>
   <a href={next}><button disabled={!next}>Siguiente</button></a>
 </div>
 
 <style>
   .paged {
     display: flex;
+    align-items: center;
     gap: 1rem;
 
     a {
