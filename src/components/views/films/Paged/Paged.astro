@@ -1,0 +1,37 @@
+---
+interface Props {
+  prev?: string;
+  next?: string;
+}
+
+const { next, prev } = Astro.props;
+---
+
+<div class="paged">
+  <a href={prev}><button disabled={!prev}>Anterior</button></a>
+  <a href={next}><button disabled={!next}>Siguiente</button></a>
+</div>
+
+<style>
+  .paged {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      button {
+        border: var(--border);
+        border-radius: 1rem;
+        padding: 1rem;
+
+        &:active:not(:disabled) {
+          transform: scale(0.9);
+        }
+
+        &:disabled {
+          color: var(--soft-grey);
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import ListFilms from "../components/views/films/ListFilms/ListFilms.astro";
-import { getFilmsService } from "../components/views/films/services/getFilms.service";
+import Paged from "../components/views/films/Paged/Paged.astro";
+import { getFilmsService } from "../components/views/films/services/getFilmsService";
 import Layout from "../layouts/Layout/Layout.astro";
 import { ROUTER } from "./router";
 
@@ -9,7 +10,8 @@ const films = await getFilmsService();
 
 <Layout title={ROUTER.films.display}>
   <h1>{ROUTER.films.display}</h1>
-  <ListFilms films={films} />
+  <ListFilms films={films.slice(0, 4)} />
+  <Paged next={"2"} />
 </Layout>
 
 <style></style>

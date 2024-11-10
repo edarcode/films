@@ -1,0 +1,26 @@
+---
+import type { GetStaticPaths } from "astro";
+import ListFilms from "../../components/views/films/ListFilms/ListFilms.astro";
+import { getFilmsService } from "../../components/views/films/services/getFilmsService";
+import Layout from "../../layouts/Layout/Layout.astro";
+import { ROUTER } from "../router";
+import Paged from "../../components/views/films/Paged/Paged.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const films = await getFilmsService({ totalPages: 3 });
+  return paginate(films, { pageSize: 4 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+
+page.url.next;
+page.url.prev;
+---
+
+<Layout title={ROUTER.films.display}>
+  <h1>{ROUTER.films.display}</h1>
+  <ListFilms films={page.data} />
+  <Paged prev={page.url.prev} next={page.url.next} />
+</Layout>
+
+<style></style>

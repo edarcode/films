@@ -27,3 +27,8 @@ export enum OriginalLanguageApi {
   Fr = "fr",
   Tl = "tl",
 }
+
+export interface Film extends FilmApi {
+  poster: string;
+  backdrop: string;
+}

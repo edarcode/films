@@ -1,6 +1,6 @@
 ---
 import { ROUTER } from "../../../../pages/router";
-import type { Film } from "../services/getFilms.service";
+import type { Film } from "../types";
 
 interface Props {
   films: Film[];
@@ -13,7 +13,7 @@ const { films } = Astro.props;
   {
     films.map((film) => (
       <li>
-        <a href={`${ROUTER.films.path}${film.id}`}>
+        <a href={`${ROUTER.films.path}${film.id}_${film.title}`}>
           <h2>{film.title}</h2>
           <picture>
             <img src={film.poster} alt={film.title} />
@@ -33,6 +33,7 @@ const { films } = Astro.props;
 
     li {
       width: 300px;
+      min-height: 505px;
       border: var(--border);
       border-radius: 1rem;
       overflow: hidden;

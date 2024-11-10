@@ -1,6 +1,6 @@
-import type { FilmApi, FilmsApi } from "../types";
+import type { FilmsApi } from "../types";
 
-export const getFilmsService = async ({ page = 1 }: Params = {}) => {
+export const getFilmPageService = async (page: number) => {
   const TMDB_API_KEY = import.meta.env.TMDB_API_KEY;
   const url = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=es-ES&page=${page}`;
 
@@ -17,12 +17,3 @@ export const getFilmsService = async ({ page = 1 }: Params = {}) => {
 
   return results;
 };
-
-type Params = {
-  page?: number;
-};
-
-export interface Film extends FilmApi {
-  poster: string;
-  backdrop: string;
-}
