@@ -1,8 +1,8 @@
 import type { FilmsApi } from "../types";
 
 export const getFilmPageService = async (page: number) => {
-  const TMDB_API_KEY = import.meta.env.TMDB_API_KEY;
-  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=es-ES&page=${page}`;
+  const PUBLIC_TMDB_API_KEY = import.meta.env.PUBLIC_TMDB_API_KEY;
+  const url = `https://api.themoviedb.org/3/movie/popular?api_key=${PUBLIC_TMDB_API_KEY}&language=es-ES&page=${page}`;
 
   const res = await fetch(url);
   const films = (await res.json()) as FilmsApi;
