@@ -1,13 +1,15 @@
 ---
 import ListFilms from "../components/views/films/ListFilms/ListFilms.astro";
-import type { Films } from "../components/views/films/types";
+import { getFilmsService } from "../components/views/films/services/getFilms.service";
 import Layout from "../layouts/Layout/Layout.astro";
 import { ROUTER } from "./router";
+
+const films = await getFilmsService();
 ---
 
 <Layout title={ROUTER.films.display}>
   <h1>{ROUTER.films.display}</h1>
-  <ListFilms />
+  <ListFilms films={films} />
 </Layout>
 
 <style></style>

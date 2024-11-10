@@ -1,16 +1,16 @@
-export interface Films {
+export interface FilmsApi {
   page: number;
-  results: Film[];
+  results: FilmApi[];
   total_pages: number;
   total_results: number;
 }
 
-export interface Film {
+export interface FilmApi {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
   id: number;
-  original_language: OriginalLanguage;
+  original_language: OriginalLanguageApi;
   original_title: string;
   overview: string;
   popularity: number;
@@ -22,7 +22,7 @@ export interface Film {
   vote_count: number;
 }
 
-export enum OriginalLanguage {
+export enum OriginalLanguageApi {
   En = "en",
   Fr = "fr",
   Tl = "tl",

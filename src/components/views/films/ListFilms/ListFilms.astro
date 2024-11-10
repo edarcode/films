@@ -1,11 +1,12 @@
 ---
 import { ROUTER } from "../../../../pages/router";
-import { getFilmsService } from "../services/getFilms.service";
+import type { Film } from "../services/getFilms.service";
 
-const films1 = await getFilmsService();
-const films2 = await getFilmsService({ page: 2 });
+interface Props {
+  films: Film[];
+}
 
-const films = [...films1.results, ...films2.results];
+const { films } = Astro.props;
 ---
 
 <ul class="list">

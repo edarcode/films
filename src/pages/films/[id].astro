@@ -4,9 +4,9 @@ import Layout from "../../layouts/Layout/Layout.astro";
 import { getFilmsService } from "../../components/views/films/services/getFilms.service";
 
 export const getStaticPaths = (async () => {
-  const { results: films1 } = await getFilmsService();
-  const { results: films2 } = await getFilmsService({ page: 2 });
-  const { results: films3 } = await getFilmsService({ page: 3 });
+  const films1 = await getFilmsService();
+  const films2 = await getFilmsService({ page: 2 });
+  const films3 = await getFilmsService({ page: 3 });
 
   const films = [...films1, ...films2, ...films3];
 
