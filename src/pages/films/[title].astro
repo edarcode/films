@@ -9,7 +9,7 @@ export const getStaticPaths = (async () => {
 
   const pages = films.map((film) => ({
     params: {
-      id_title: `${film.id}_${normalize(film.title)}`,
+      title: normalize(film.title),
     },
     props: {
       title: film.title,
