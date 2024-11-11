@@ -2,13 +2,14 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout/Layout.astro";
 import { getFilmsService } from "../../components/views/films/services/getFilmsService";
+import { normalize } from "../../utils/normalize";
 
 export const getStaticPaths = (async () => {
   const films = await getFilmsService({ totalPages: 3 });
 
   const pages = films.map((film) => ({
     params: {
-      id_title: `${film.id}_${film.title.replace(/[¿?]/g, "").split(" ").splice(0, 3).join("_")}`,
+      id_title: `${film.id}_${normalize(film.title)}`,
     },
     props: {
       title: film.title,

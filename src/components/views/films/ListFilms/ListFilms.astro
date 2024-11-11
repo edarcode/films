@@ -1,5 +1,6 @@
 ---
 import { ROUTER } from "../../../../pages/router";
+import { normalize } from "../../../../utils/normalize";
 import type { Film } from "../types";
 
 interface Props {
@@ -13,9 +14,7 @@ const { films } = Astro.props;
   {
     films.map((film) => (
       <li>
-        <a
-          href={`${ROUTER.films.path}${film.id}_${film.title.replace(/[¿?]/g, "").split(" ").splice(0, 3).join("_")}`}
-        >
+        <a href={`${ROUTER.films.path}${film.id}_${normalize(film.title)}`}>
           <h2>{film.title}</h2>
           <picture>
             <img src={film.poster} alt={film.title} />
