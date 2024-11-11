@@ -12,7 +12,7 @@ const { films } = Astro.props;
 
 <ul class="list">
   {
-    films.map((film) => (
+    films?.map((film) => (
       <li>
         <a href={`${ROUTER.films.path}${normalize(film.title)}`}>
           <h2>{film.title}</h2>
