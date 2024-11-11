@@ -13,6 +13,7 @@ export const getStaticPaths = (async () => {
       title: normalize(film.title),
     },
     props: {
+      id: film.id,
       title: film.title,
       backdrop: film.backdrop,
       poster: film.poster,
@@ -30,63 +31,72 @@ const date = new Date(releaseDate).toLocaleDateString();
 
 <Layout title={title} img={poster} description={`Detalles sobre ${title}`}>
   <div class="details">
-    <h1>
-      {title}
-    </h1>
-    <div class="wrapper1">
-      <img src={backdrop} alt={title} />
-      <p>{overview}</p>
-      <span class="date">{date}</span>
-    </div>
-    <Btn class="btn" onclick="history.back()">Volver</Btn>
+    <article>
+      <h1>
+        {title}
+      </h1>
+      <div class="wrapper1">
+        <img src={backdrop} alt={title} />
+        <p>{overview}</p>
+        <span class="date">{date}</span>
+      </div>
+      <Btn class="btn" onclick="history.back()">Volver</Btn>
+    </article>
   </div>
 </Layout>
 
 <style>
   .details {
     height: 100%;
-    padding: 1rem;
     display: grid;
     align-content: center;
 
-    gap: 1rem;
-
-    h1 {
-      color: var(--primary);
-      font-size: 3rem;
-    }
-
-    .wrapper1 {
+    article {
       position: relative;
+      background-color: var(--bg-surf);
+      border-radius: 1rem;
+      padding: 2rem;
+
       display: grid;
-      grid-template-columns: 35% 1fr;
+      gap: 1rem;
 
-      @media (max-width: 768px) {
-        grid-template-columns: 1fr;
+      h1 {
+        color: var(--primary);
+        font-size: 3rem;
       }
 
-      img {
-        width: 100%;
-        border-radius: 1rem;
+      .wrapper1 {
+        position: relative;
+        display: grid;
+        grid-template-columns: 35% 1fr;
+
+        @media (max-width: 768px) {
+          grid-template-columns: 1fr;
+        }
+
+        img {
+          width: 100%;
+          border-radius: 1rem;
+        }
+
+        p {
+          padding: 1rem;
+        }
+
+        .date {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          border: var(--border);
+          padding: 1rem;
+          border-radius: 1rem;
+          font-weight: bold;
+        }
       }
 
-      p {
-        padding: 1rem;
+      .btn {
+        justify-self: start;
       }
-
-      .date {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        border: var(--border);
-        padding: 1rem;
-        border-radius: 1rem;
-        font-weight: bold;
-      }
-    }
-
-    .btn {
-      justify-self: start;
     }
   }
 </style>
