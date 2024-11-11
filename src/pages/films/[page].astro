@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths } from "astro";
-import ListFilms from "../../components/views/films/ListFilms/ListFilms.astro";
-import { getFilmsService } from "../../components/views/films/services/getFilmsService";
 import Layout from "../../layouts/Layout/Layout.astro";
 import { ROUTER } from "../router";
 import Paged from "../../components/pageds/Paged/Paged.astro";
+import { getFilmsService } from "./services/getFilmsService";
+import ListFilms from "./ListFilms/ListFilms.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const films = await getFilmsService({ totalPages: 3 });
@@ -18,13 +18,19 @@ page.url.prev;
 ---
 
 <Layout title={ROUTER.films.display}>
-  <h1>{ROUTER.films.display}</h1>
-  <ListFilms films={page.data} />
-  <Paged
-    prev={page.url.prev}
-    next={page.url.next}
-    currentPage={page.currentPage}
-  />
+  <div class="films">
+    <ListFilms films={page.data} />
+    <Paged
+      prev={page.url.prev}
+      next={page.url.next}
+      currentPage={page.currentPage}
+    />
+  </div>
 </Layout>
 
-<style></style>
+<style>
+  .films {
+    display: grid;
+    gap: 1rem;
+  }
+</style>

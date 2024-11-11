@@ -6,6 +6,8 @@ import "../../styles/colors.css";
 import "../../styles/fonts.css";
 import "../../styles/reset.css";
 import { META_SITE } from "./metaSite";
+import Header from "./Header/Header.astro";
+import Footer from "./Footer/Footer.astro";
 
 interface Props {
   title?: string;
@@ -41,27 +43,32 @@ const {
     <ViewTransitions />
   </head>
   <body>
-    <header><Nav /></header>
+    <Header />
     <main>
       <slot />
     </main>
-    <footer>©️Casi todos los derechos reservados</footer>
+    <Footer />
   </body>
 </html>
 
 <style>
   :root {
-    --border: 1px solid var(--brr);
+    --border: 1px solid var(--bg-surf);
     --mw-layout: 1300px;
   }
 
   body {
     display: grid;
+    gap: 2rem;
     grid-template-rows: auto 1fr auto;
-    margin-left: auto;
-    margin-right: auto;
 
     min-height: 100vh;
-    max-width: var(--mw-layout);
+
+    main {
+      width: 100%;
+      max-width: var(--mw-layout);
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 </style>

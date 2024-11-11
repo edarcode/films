@@ -1,12 +1,11 @@
 :root {
-  --bg-main: #000000; /* Fondo Principal */
-  --bg-surf: #252525; /* Superficie */
+  --bg-main: #fff; /* Fondo Principal */
+  --bg-surf: #ccc; /* Superficie */
   --primary: hsl(255, 72%, 47%); /* Primario */
   --secondary: hsl(201, 83%, 39%); /* Secundario */
   --titles: #fff; /* Texto Principal */
   --paras: #fff; /* Texto Secundario */
   --hl: #ffbc42; /* Resaltado */
-  --brr: #cccccc; /* Borde */
   --accent: #dd4ea5; /* Acento */
   --hover: #3c91e6; /* Hover */
 

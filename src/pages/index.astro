@@ -4,5 +4,16 @@ import { ROUTER } from "./router";
 ---
 
 <Layout title={ROUTER.index.display}>
-  <h1 class="text-6xl">{ROUTER.index.display}</h1>
+  <div class="index">
+    <h1>¡Bienvenido! 🎥</h1>
+  </div>
 </Layout>
+
+<style>
+  .index {
+    height: 100%;
+
+    display: grid;
+    place-content: center;
+  }
+</style>

@@ -1,8 +1,8 @@
 ---
 import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout/Layout.astro";
-import { getFilmsService } from "../../components/views/films/services/getFilmsService";
 import { normalize } from "../../utils/normalize";
+import { getFilmsService } from "./services/getFilmsService";
 
 export const getStaticPaths = (async () => {
   const films = await getFilmsService({ totalPages: 3 });

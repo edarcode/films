@@ -1,17 +1,21 @@
 ---
 import { ROUTER } from "../../../pages/router";
+import GoToPage from "../../hyperlinks/GoToPage/GoToPage.astro";
 ---
 
 <nav class="nav">
-  <a href={ROUTER.index.path}>{ROUTER.index.display}</a>
-  <a href={ROUTER.films.path}>{ROUTER.films.display}</a>
+  <GoToPage href={ROUTER.index.path}>{ROUTER.index.display}</GoToPage>
+  <GoToPage href={ROUTER.films.path + "1"}>{ROUTER.films.display}</GoToPage>
 </nav>
 
 <style>
   .nav {
     display: flex;
     gap: var(--lg);
-    font-size: 3rem;
+
+    font-size: 2rem;
+    border: var(--border);
+    border-radius: 1rem;
 
     a {
       padding: 1rem;
