@@ -40,8 +40,8 @@ const date = new Date(releaseDate).toLocaleDateString();
         <p>{overview}</p>
         <span class="date">{date}</span>
       </div>
-      <Btn class="btn" onclick="history.back()">Volver</Btn>
     </article>
+    <Btn class="btn" onclick="history.back()">Volver</Btn>
   </div>
 </Layout>
 
@@ -50,13 +50,17 @@ const date = new Date(releaseDate).toLocaleDateString();
     height: 100%;
     display: grid;
     align-content: center;
+    gap: 1rem;
+
+    .btn {
+      justify-self: start;
+    }
 
     article {
       position: relative;
       background-color: var(--bg-surf);
       border-radius: 1rem;
       padding: 2rem;
-
       display: grid;
       gap: 1rem;
 
@@ -92,10 +96,6 @@ const date = new Date(releaseDate).toLocaleDateString();
           border-radius: 1rem;
           font-weight: bold;
         }
-      }
-
-      .btn {
-        justify-self: start;
       }
     }
   }
