@@ -6,13 +6,14 @@ export const getFilmPageService = async (page: number) => {
 
   const res = await fetch(url);
   const films = (await res.json()) as FilmsApi;
-  const size = "w300";
-  const baseImageUrl = `https://image.tmdb.org/t/p/${size}`;
+
+  const baseImageUrlPoster = `https://image.tmdb.org/t/p/w300`;
+  const baseImageUrlBackdrop = `https://image.tmdb.org/t/p/w500`;
 
   const results = films.results.map((item) => ({
     ...item,
-    poster: `${baseImageUrl}${item.poster_path}`,
-    backdrop: `${baseImageUrl}${item.backdrop_path}`,
+    poster: `${baseImageUrlPoster}${item.poster_path}`,
+    backdrop: `${baseImageUrlBackdrop}${item.backdrop_path}`,
   }));
 
   return results;

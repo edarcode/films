@@ -1,6 +1,6 @@
 :root {
   --bg-main: #fff; /* Fondo Principal */
-  --bg-surf: #ccc; /* Superficie */
+  --bg-surf: rgb(224, 224, 224); /* Superficie */
   --primary: hsl(255, 72%, 47%); /* Primario */
   --secondary: hsl(201, 83%, 39%); /* Secundario */
   --titles: #fff; /* Texto Principal */

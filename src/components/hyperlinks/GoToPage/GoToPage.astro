@@ -16,6 +16,10 @@ const isActive = Astro.url.pathname === Astro.props.href;
   .goToPage {
     color: inherit;
     padding: 1rem;
+
+    &:hover {
+      color: var(--primary);
+    }
   }
 
   .isActive {

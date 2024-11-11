@@ -15,18 +15,68 @@ export const getStaticPaths = (async () => {
       title: film.title,
       backdrop: film.backdrop,
       poster: film.poster,
+      overview: film.overview,
+      releaseDate: film.release_date,
     },
   }));
 
   return pages;
 }) satisfies GetStaticPaths;
 
-const { title, backdrop, poster } = Astro.props;
+const { title, backdrop, poster, overview, releaseDate } = Astro.props;
+const date = new Date(releaseDate).toLocaleDateString();
 ---
 
 <Layout title={title} img={poster} description={`Detalles sobre ${title}`}>
-  <h1>
-    {title}
-  </h1>
-  <img src={backdrop} alt={title} />
+  <div class="details">
+    <h1>
+      {title}
+    </h1>
+    <div class="wrapper1">
+      <img src={backdrop} alt={title} />
+      <p>{overview}</p>
+      <span class="date">{date}</span>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .details {
+    height: 100%;
+    padding: 1rem;
+
+    h1 {
+      color: var(--primary);
+      font-size: 3rem;
+    }
+
+    .wrapper1 {
+      position: relative;
+      display: grid;
+      grid-template-columns: 35% 1fr;
+
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+
+      img {
+        width: 100%;
+        border-radius: 1rem;
+      }
+
+      p {
+        padding: 1rem;
+      }
+
+      .date {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: var(--border);
+        padding: 1rem;
+        border-radius: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+</style>
