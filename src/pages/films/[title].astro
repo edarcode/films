@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout/Layout.astro";
 import { normalize } from "../../utils/normalize";
 import { getFilmsService } from "./services/getFilmsService";
 import Btn from "../../components/buttons/Btn/Btn.astro";
+import { Icon } from "astro-icon/components";
 
 export const getStaticPaths = (async () => {
   const films = await getFilmsService({ totalPages: 3 });
@@ -25,7 +26,7 @@ export const getStaticPaths = (async () => {
   return pages;
 }) satisfies GetStaticPaths;
 
-const { title, backdrop, poster, overview, releaseDate } = Astro.props;
+const { id, title, backdrop, poster, overview, releaseDate } = Astro.props;
 const date = new Date(releaseDate).toLocaleDateString();
 ---
 
@@ -40,10 +41,33 @@ const date = new Date(releaseDate).toLocaleDateString();
         <p>{overview}</p>
         <span class="date">{date}</span>
       </div>
+      <button class="wrapperHeart" id="wrapperHeart" data-filmid={id}>
+        <Icon class="heart active" id="heart" name="heart" />
+        <Icon class="heart_fill" id="heart_fill" name="heart_fill" />
+      </button>
     </article>
     <Btn class="btn" onclick="history.back()">Volver</Btn>
   </div>
 </Layout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const wrapperHeart = document.querySelector(
+      "#wrapperHeart"
+    ) as HTMLButtonElement;
+
+    if (!wrapperHeart) return;
+
+    const heart = document.querySelector("#heart") as SVGAElement;
+    const heartFill = document.querySelector("#heart_fill") as SVGAElement;
+
+    wrapperHeart.addEventListener("click", () => {
+      heart.classList.toggle("active");
+      heartFill.classList.toggle("active");
+      console.log(wrapperHeart.dataset.filmid);
+    });
+  });
+</script>
 
 <style>
   .details {
@@ -63,6 +87,32 @@ const date = new Date(releaseDate).toLocaleDateString();
       padding: 2rem;
       display: grid;
       gap: 1rem;
+
+      .wrapperHeart {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        cursor: pointer;
+        width: 2rem;
+        height: 2rem;
+
+        .heart,
+        .heart_fill {
+          width: 100%;
+          height: 100%;
+          display: none;
+        }
+
+        .heart {
+        }
+
+        .heart_fill {
+        }
+
+        .active {
+          display: initial;
+        }
+      }
 
       h1 {
         color: var(--primary);
