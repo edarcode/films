@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import Layout from "../../layouts/Layout/Layout.astro";
 import { normalize } from "../../utils/normalize";
 import { getFilmsService } from "./services/getFilmsService";
+import Btn from "../../components/buttons/Btn/Btn.astro";
 
 export const getStaticPaths = (async () => {
   const films = await getFilmsService({ totalPages: 3 });
@@ -37,6 +38,7 @@ const date = new Date(releaseDate).toLocaleDateString();
       <p>{overview}</p>
       <span class="date">{date}</span>
     </div>
+    <Btn class="btn" onclick="history.back()">Volver</Btn>
   </div>
 </Layout>
 
@@ -44,6 +46,10 @@ const date = new Date(releaseDate).toLocaleDateString();
   .details {
     height: 100%;
     padding: 1rem;
+    display: grid;
+    align-content: center;
+
+    gap: 1rem;
 
     h1 {
       color: var(--primary);
@@ -77,6 +83,10 @@ const date = new Date(releaseDate).toLocaleDateString();
         border-radius: 1rem;
         font-weight: bold;
       }
+    }
+
+    .btn {
+      justify-self: start;
     }
   }
 </style>
