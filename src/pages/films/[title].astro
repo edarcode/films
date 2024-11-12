@@ -55,17 +55,42 @@ const date = new Date(releaseDate).toLocaleDateString();
     const wrapperHeart = document.querySelector(
       "#wrapperHeart"
     ) as HTMLButtonElement;
-
     if (!wrapperHeart) return;
 
     const heart = document.querySelector("#heart") as SVGAElement;
     const heartFill = document.querySelector("#heart_fill") as SVGAElement;
+    const filmId = wrapperHeart.dataset.filmid;
+
+    const favoriteIds = JSON.parse(
+      localStorage.getItem("filmIds") ?? "[]"
+    ) as string[];
+
+    const isFavoriteId = favoriteIds.some((id) => id === filmId);
+
+    if (isFavoriteId) {
+      heart.classList.remove("active");
+      heartFill.classList.add("active");
+    }
 
     wrapperHeart.addEventListener("click", () => {
       heart.classList.toggle("active");
       heartFill.classList.toggle("active");
-      console.log(wrapperHeart.dataset.filmid);
+      toggleFavoriteFilm(filmId);
     });
+
+    const toggleFavoriteFilm = (id?: string) => {
+      if (!id) return;
+
+      const favoriteFilmIds = new Set([...favoriteIds]);
+
+      if (favoriteFilmIds.has(id)) favoriteFilmIds.delete(id);
+      else favoriteFilmIds.add(id);
+
+      localStorage.setItem(
+        "filmIds",
+        JSON.stringify(Array.from(favoriteFilmIds))
+      );
+    };
   });
 </script>
 
