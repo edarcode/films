@@ -61,11 +61,11 @@ const date = new Date(releaseDate).toLocaleDateString();
     const heartFill = document.querySelector("#heart_fill") as SVGAElement;
     const filmId = wrapperHeart.dataset.filmid;
 
-    const favoriteIds = JSON.parse(
-      localStorage.getItem("filmIds") ?? "[]"
+    const favoriteFilmIds = JSON.parse(
+      localStorage.getItem("favoriteFilmIds") ?? "[]"
     ) as string[];
 
-    const isFavoriteId = favoriteIds.some((id) => id === filmId);
+    const isFavoriteId = favoriteFilmIds.some((id) => id === filmId);
 
     if (isFavoriteId) {
       heart.classList.remove("active");
@@ -75,19 +75,24 @@ const date = new Date(releaseDate).toLocaleDateString();
     wrapperHeart.addEventListener("click", () => {
       heart.classList.toggle("active");
       heartFill.classList.toggle("active");
+
       toggleFavoriteFilm(filmId);
     });
 
     const toggleFavoriteFilm = (id?: string) => {
       if (!id) return;
 
-      const favoriteFilmIds = new Set([...favoriteIds]);
+      const favFilmIds = JSON.parse(
+        localStorage.getItem("favoriteFilmIds") ?? "[]"
+      ) as string[];
+
+      const favoriteFilmIds = new Set(favFilmIds);
 
       if (favoriteFilmIds.has(id)) favoriteFilmIds.delete(id);
       else favoriteFilmIds.add(id);
 
       localStorage.setItem(
-        "filmIds",
+        "favoriteFilmIds",
         JSON.stringify(Array.from(favoriteFilmIds))
       );
     };
