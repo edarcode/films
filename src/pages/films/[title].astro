@@ -51,6 +51,9 @@ const date = new Date(releaseDate).toLocaleDateString();
 </Layout>
 
 <script>
+  import { favoriteFilmIdsToggle } from "./favoriteFilmIdsToggle";
+  import { getFavoriteFilmIds } from "./getFavoriteFilmIds";
+
   document.addEventListener("astro:page-load", () => {
     const wrapperHeart = document.querySelector(
       "#wrapperHeart"
@@ -61,10 +64,7 @@ const date = new Date(releaseDate).toLocaleDateString();
     const heartFill = document.querySelector("#heart_fill") as SVGAElement;
     const filmId = wrapperHeart.dataset.filmid;
 
-    const favoriteFilmIds = JSON.parse(
-      localStorage.getItem("favoriteFilmIds") ?? "[]"
-    ) as string[];
-
+    const favoriteFilmIds = getFavoriteFilmIds();
     const isFavoriteId = favoriteFilmIds.some((id) => id === filmId);
 
     if (isFavoriteId) {
@@ -76,26 +76,8 @@ const date = new Date(releaseDate).toLocaleDateString();
       heart.classList.toggle("active");
       heartFill.classList.toggle("active");
 
-      toggleFavoriteFilm(filmId);
+      favoriteFilmIdsToggle(filmId);
     });
-
-    const toggleFavoriteFilm = (id?: string) => {
-      if (!id) return;
-
-      const favFilmIds = JSON.parse(
-        localStorage.getItem("favoriteFilmIds") ?? "[]"
-      ) as string[];
-
-      const favoriteFilmIds = new Set(favFilmIds);
-
-      if (favoriteFilmIds.has(id)) favoriteFilmIds.delete(id);
-      else favoriteFilmIds.add(id);
-
-      localStorage.setItem(
-        "favoriteFilmIds",
-        JSON.stringify(Array.from(favoriteFilmIds))
-      );
-    };
   });
 </script>
 
