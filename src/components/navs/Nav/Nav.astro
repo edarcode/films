@@ -6,6 +6,7 @@ import GoToPage from "../../hyperlinks/GoToPage/GoToPage.astro";
 <nav class="nav">
   <GoToPage href={ROUTER.index.path}>{ROUTER.index.display}</GoToPage>
   <GoToPage href={ROUTER.films.path + "1"}>{ROUTER.films.display}</GoToPage>
+  <GoToPage href={ROUTER.favorites.path}>{ROUTER.favorites.display}</GoToPage>
 </nav>
 
 <style>

@@ -7,4 +7,8 @@ export const ROUTER = {
     path: "/films/",
     display: "Péliculas",
   },
+  favorites: {
+    path: "/favorites/",
+    display: "Favoritas",
+  },
 };
