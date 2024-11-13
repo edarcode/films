@@ -51,8 +51,8 @@ const date = new Date(releaseDate).toLocaleDateString();
 </Layout>
 
 <script>
-  import { favoriteFilmIdsToggle } from "./favoriteFilmIdsToggle";
-  import { getFavoriteFilmIds } from "./getFavoriteFilmIds";
+  import { favoriteFilmIdsToggle } from "./utils/favoriteFilmIdsToggle";
+  import { getFavoriteFilmIds } from "./utils/getFavoriteFilmIds";
 
   document.addEventListener("astro:page-load", () => {
     const wrapperHeart = document.querySelector(
