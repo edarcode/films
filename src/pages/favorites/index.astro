@@ -1,8 +1,11 @@
 ---
 import Layout from "../../layouts/Layout/Layout.astro";
 import { ROUTER } from "../router";
+import FavoriteFilmIds from "./FavoriteFilmIds/FavoriteFilmIds";
 ---
 
 <Layout title={ROUTER.favorites.display}>
-  <div class="favorite"></div>
+  <div class="favorite">
+    <FavoriteFilmIds client:only />
+  </div>
 </Layout>

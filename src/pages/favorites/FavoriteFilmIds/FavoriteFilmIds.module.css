@@ -1,0 +1,4 @@
+.favorites {
+  display: flex;
+  gap: 1rem;
+}
